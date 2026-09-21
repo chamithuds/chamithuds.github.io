@@ -207,6 +207,42 @@ document.querySelectorAll(".skill-card").forEach((card) => {
 
 });
 
+// ===============================
+// ERP PROJECT 3D TILT
+// ===============================
+
+const projectCard = document.querySelector(".featured-project");
+
+if (projectCard && window.matchMedia("(pointer: fine)").matches) {
+
+  projectCard.addEventListener("mousemove", (event) => {
+
+    const rect = projectCard.getBoundingClientRect();
+
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateY = ((x - centerX) / centerX) * 2.5;
+    const rotateX = ((y - centerY) / centerY) * -2.5;
+
+    projectCard.style.transform =
+      `perspective(1200px)
+       rotateX(${rotateX}deg)
+       rotateY(${rotateY}deg)
+       scale(1.01)`;
+  });
+
+  projectCard.addEventListener("mouseleave", () => {
+
+    projectCard.style.transform =
+      "perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1)";
+
+  });
+}
+
 
 // ===============================
 // ACTIVE NAVIGATION
