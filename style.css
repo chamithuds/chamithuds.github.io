@@ -500,6 +500,8 @@ img {
   border: 1px solid var(--border);
   border-radius: 28px;
   background: var(--card);
+  transition: transform .35s ease, box-shadow .35s ease;
+  transform-style: preserve-3d;
 }
 
 .project-content h3 {
