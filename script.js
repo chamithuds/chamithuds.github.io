@@ -47,13 +47,15 @@ if (typingElement) {
 
 
 // ===============================
-// SAFE SCROLL REVEAL
+// SAFE SCROLL REVEAL + SKILL STAGGER
 // ===============================
 
-const revealElements = document.querySelectorAll(".reveal");
+const revealElements = document.querySelectorAll(".reveal:not(.skill-card)");
+const skillCards = document.querySelectorAll(".skill-card.reveal");
+const skillsGrid = document.querySelector(".skills-grid");
 
 if ("IntersectionObserver" in window) {
-
+  // Normal sections reveal independently.
   const revealObserver = new IntersectionObserver(
     (entries, observer) => {
       entries.forEach((entry) => {
@@ -63,32 +65,36 @@ if ("IntersectionObserver" in window) {
         }
       });
     },
-    {
-      threshold: 0.08,
-      rootMargin: "0px 0px -40px 0px"
-    }
+    { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
   );
 
-revealElements.forEach((element) => {
+  revealElements.forEach((element) => revealObserver.observe(element));
 
-  // Stagger skill cards one after another
-  if (element.classList.contains("skill-card")) {
-    const skillCards = [...document.querySelectorAll(".skill-card")];
-    const index = skillCards.indexOf(element);
+  // Skills reveal as one sequence: 1 -> 2 -> 3 -> 4.
+  if (skillsGrid && skillCards.length) {
+    const skillsObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
 
-    element.style.transitionDelay = `${index * 180}ms`;
+          skillCards.forEach((card, index) => {
+            window.setTimeout(() => {
+              card.classList.add("active");
+            }, index * 220);
+          });
+
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.18, rootMargin: "0px 0px -70px 0px" }
+    );
+
+    skillsObserver.observe(skillsGrid);
   }
-
-  revealObserver.observe(element);
-});
-
 } else {
-
-  // Fallback for unsupported browsers
-  revealElements.forEach((element) => {
+  document.querySelectorAll(".reveal").forEach((element) => {
     element.classList.add("active");
   });
-
 }
 
 
