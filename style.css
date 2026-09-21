@@ -807,8 +807,4 @@ footer strong {
   }
 }
 
-/* Temporary fallback */
-.reveal {
-  opacity: 1;
-  transform: translateY(0);
-}
+
