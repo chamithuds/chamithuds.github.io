@@ -80,7 +80,7 @@ if ("IntersectionObserver" in window) {
           skillCards.forEach((card, index) => {
             window.setTimeout(() => {
               card.classList.add("active");
-            }, index * 220);
+            }, index * 400);
           });
 
           observer.unobserve(entry.target);
