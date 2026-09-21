@@ -499,7 +499,13 @@ img {
   padding: 45px;
   border: 1px solid var(--border);
   border-radius: 28px;
-  background: var(--card);
+  background:
+  radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(56, 189, 248, .13),
+    transparent 32%
+  ),
+  var(--card);
   transition: transform .35s ease, box-shadow .35s ease;
   transform-style: preserve-3d;
 }
