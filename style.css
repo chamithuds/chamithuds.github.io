@@ -592,6 +592,13 @@ img {
     radial-gradient(circle at center, rgba(56,189,248,.12), transparent 55%);
 }
 
+.erp-preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 .erp-logo {
   font-family: "Space Grotesk", sans-serif;
   font-size: 4rem;
