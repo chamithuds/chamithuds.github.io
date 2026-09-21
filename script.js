@@ -159,6 +159,11 @@ if (heroImage && window.matchMedia("(pointer: fine)").matches) {
 
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
+    const mouseX = (x / rect.width) * 100;
+const mouseY = (y / rect.height) * 100;
+
+projectCard.style.setProperty("--mouse-x", `${mouseX}%`);
+projectCard.style.setProperty("--mouse-y", `${mouseY}%`);
 
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
