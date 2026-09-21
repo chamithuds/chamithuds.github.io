@@ -803,6 +803,12 @@ footer strong {
     scroll-behavior: auto !important;
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
+
+/* Fallback: content must always remain visible */
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}    
     transition-duration: .01ms !important;
   }
 }
