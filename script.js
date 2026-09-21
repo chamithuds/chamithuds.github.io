@@ -216,7 +216,6 @@ const projectCard = document.querySelector(".featured-project");
 if (projectCard && window.matchMedia("(pointer: fine)").matches) {
 
   projectCard.addEventListener("mousemove", (event) => {
-
     const rect = projectCard.getBoundingClientRect();
 
     const x = event.clientX - rect.left;
@@ -236,10 +235,8 @@ if (projectCard && window.matchMedia("(pointer: fine)").matches) {
   });
 
   projectCard.addEventListener("mouseleave", () => {
-
     projectCard.style.transform =
       "perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1)";
-
   });
 }
 
