@@ -69,9 +69,18 @@ if ("IntersectionObserver" in window) {
     }
   );
 
-  revealElements.forEach((element) => {
-    revealObserver.observe(element);
-  });
+revealElements.forEach((element) => {
+
+  // Stagger skill cards one after another
+  if (element.classList.contains("skill-card")) {
+    const skillCards = [...document.querySelectorAll(".skill-card")];
+    const index = skillCards.indexOf(element);
+
+    element.style.transitionDelay = `${index * 180}ms`;
+  }
+
+  revealObserver.observe(element);
+});
 
 } else {
 
