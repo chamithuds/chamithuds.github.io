@@ -245,6 +245,45 @@ projectCard.style.setProperty("--mouse-y", `${mouseY}%`);
   });
 }
 
+// ===============================
+// ERP SCREENSHOT LIGHTBOX
+// ===============================
+
+const erpPreview = document.querySelector(".clickable-preview");
+const erpLightbox = document.getElementById("erpLightbox");
+const lightboxClose = document.querySelector(".lightbox-close");
+
+if (erpPreview && erpLightbox && lightboxClose) {
+
+  // Open
+  erpPreview.addEventListener("click", () => {
+    erpLightbox.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+
+  // Close button
+  lightboxClose.addEventListener("click", () => {
+    erpLightbox.classList.remove("active");
+    document.body.style.overflow = "";
+  });
+
+  // Click outside image to close
+  erpLightbox.addEventListener("click", (event) => {
+    if (event.target === erpLightbox) {
+      erpLightbox.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
+
+  // ESC key to close
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && erpLightbox.classList.contains("active")) {
+      erpLightbox.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
+}
+
 
 // ===============================
 // ACTIVE NAVIGATION
