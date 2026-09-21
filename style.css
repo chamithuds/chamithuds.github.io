@@ -691,10 +691,10 @@ footer strong {
 /* Skills use their own stagger animation so card hover and reveal do not fight. */
 .skill-card.reveal {
   opacity: 0;
-  transform: translateY(58px) scale(.965);
+  transform: translateY(70px) scale(.96);
   transition:
-    opacity .78s ease,
-    transform .78s cubic-bezier(.16, 1, .3, 1),
+    opacity 1.2s ease,
+    transform 1.2s cubic-bezier(.16, 1, .3, 1),
     border-color .35s ease,
     box-shadow .35s ease,
     background .35s ease;
