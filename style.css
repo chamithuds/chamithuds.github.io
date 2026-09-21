@@ -424,7 +424,7 @@ img {
 .about-info {
   margin-top: 35px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: .85fr 1.15fr;
   gap: 15px;
 }
 
@@ -559,6 +559,8 @@ img {
   box-shadow: 0 30px 70px rgba(0,0,0,.35);
   transform: perspective(1000px) rotateY(-6deg) rotateX(3deg);
   transition: .4s ease;
+  width: 100%;
+  overflow: hidden;
 }
 
 .browser-window:hover {
