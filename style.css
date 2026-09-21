@@ -122,6 +122,7 @@ img {
   color: var(--muted);
   font-size: .9rem;
   transition: .25s;
+  position: relative;
 }
 
 .nav-links a:hover {
