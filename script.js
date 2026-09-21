@@ -47,28 +47,40 @@ if (typingElement) {
 
 
 // ===============================
-// SCROLL REVEAL
+// SAFE SCROLL REVEAL
 // ===============================
 
 const revealElements = document.querySelectorAll(".reveal");
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("active");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.12
-  }
-);
+if ("IntersectionObserver" in window) {
 
-revealElements.forEach((element) => {
-  revealObserver.observe(element);
-});
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.08,
+      rootMargin: "0px 0px -40px 0px"
+    }
+  );
+
+  revealElements.forEach((element) => {
+    revealObserver.observe(element);
+  });
+
+} else {
+
+  // Fallback for unsupported browsers
+  revealElements.forEach((element) => {
+    element.classList.add("active");
+  });
+
+}
 
 
 // ===============================
